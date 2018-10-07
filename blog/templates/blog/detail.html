@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hostos' Blog</title>
+    <title>{{ blog.title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -36,22 +36,14 @@
 
     <main role="main">
         <div class="container">
-            <h1 class="text-center pt-3">Welcome to Hostos' Blog</h1>
-            <br />
-            <br />
-            <h2>Lastest Posts</h2>
-            <hr />
 
-            {% for blog in blogs.all %}
-
-            <a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
-            {{ blog.pub_date_pretty }}
+            <h1 class="text-center pt-3">{{ blog.title }}</h1>
+            <p class="text-center">{{ blog.pub_date }}</p>
+            <img class="img-fluid" src="{{ blog.image.url }}" height="400" width="400"/>
             <br />
-            <img class="img-fluid" src="{{ blog.image.url }}" height="200" width="200"/>
             <br />
             <!--calls 'summary' from models.py-->
-            <p>{{ blog.summary }}</p>
-            {% endfor %}
+            <p>{{ blog.body }}</p>
 
         </div>
     </main>
